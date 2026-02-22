@@ -18,6 +18,7 @@
     a{ color:var(--link); text-decoration:none }
     .container{ max-width:var(--max); margin:0 auto; padding:24px }
 
+    /* top nav */
     .top{ display:flex; gap:18px; justify-content:center; align-items:center; margin:6px 0 8px; flex-wrap:wrap }
     .top a{ font-size:15px }
     .toggle{ border:1px solid var(--border); border-radius:999px; padding:3px 10px; cursor:pointer; font-size:14px; color:var(--muted) }
@@ -26,6 +27,7 @@
     h1{ font-size:36px; margin:6px 0 2px }
     .lead{ color:var(--muted); margin:0 0 18px }
 
+    /* Masonry layout */
     .masonry{ column-count:3; column-gap:16px; }
     @media (max-width:1100px){ .masonry{ column-count:2 } }
     @media (max-width:700px){  .masonry{ column-count:1 } }
@@ -63,6 +65,8 @@
 </head>
 <body>
   <div class="container">
+
+    <!-- top nav -->
     <div class="top">
       <a href="index.html">About</a>
       <a href="index.html#experience">Experience</a>
@@ -83,36 +87,37 @@
   </div>
 
   <script>
+    /* Files are in /assets (per your repo). Keep names EXACT (case-sensitive). */
     const projects = [
       {
         title: "Group theory and homotopy for topological structures",
         subtitle: "Order parameters, defects, homotopy groups, and classification ideas for soft-matter topology.",
-        img: "./assets/projects/img/Group.jpeg",
-        pdf: "./assets/projects/pdfs/group-theory-homotopy.pdf"
+        img: "assets/Group.jpeg",
+        pdf: "assets/group-theory-homotopy.pdf"
       },
       {
         title: "Liquid crystal defects and director field structures",
         subtitle: "Defects, elastic energetics, and field-driven phenomenology in nematic and chiral nematic systems.",
-        img: "./assets/projects/img/Disclination.jpeg",
-        pdf: "./assets/projects/pdfs/liquid-crystal-defects.pdf"
+        img: "assets/Disclination.jpeg",
+        pdf: "assets/liquid-crystal-defects.pdf"
       },
       {
         title: "FDTD light simulation",
         subtitle: "Minimal FDTD setup and practical implementation notes for wave propagation and boundary conditions.",
-        img: "./assets/projects/img/FDTD.jpeg",
-        pdf: "./assets/projects/pdfs/fdtd-light-simulation.pdf"
+        img: "assets/FDTD.jpeg",
+        pdf: "assets/fdtd-light-simulation.pdf"
       },
       {
         title: "Quantum Field Theory foundations",
         subtitle: "Compact notes used as a working reference for field theory concepts relevant to texture dynamics.",
-        img: "./assets/projects/img/QFT.jpeg",
-        pdf: "./assets/projects/pdfs/main.pdf"
+        img: "assets/QFT.jpeg",
+        pdf: "assets/main.pdf"
       },
       {
         title: "Optical Neural Networks and Photonic Integrated Circuits",
         subtitle: "Notes and sketches on ONN primitives and integrated photonic building blocks.",
-        img: "./assets/projects/img/ONN.jpeg",
-        pdf: "./assets/projects/pdfs/photonic-integrated-circuits.pdf"
+        img: "assets/ONN.jpeg",
+        pdf: "assets/photonic-integrated-circuits.pdf"
       }
     ];
 
@@ -137,7 +142,9 @@
           <div class="content">
             <div class="title">${p.title}</div>
             <div class="subtitle">${p.subtitle || ""}</div>
-            <div class="chips">${pdf}</div>
+            <div class="chips">
+              ${pdf}
+            </div>
           </div>
         </article>
       `;
@@ -145,6 +152,7 @@
 
     document.getElementById("grid").innerHTML = projects.map(card).join("");
 
+    /* dark mode (default dark) */
     const root = document.documentElement;
     const btn  = document.getElementById('mode');
     const saved = localStorage.getItem('mode') || 'dark';
